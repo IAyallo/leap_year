@@ -8,9 +8,11 @@ def fib(n):
         return 1
     elif n > 2:
         return fib(n-1) + fib(n-2)
+for n in range(1, 4):
+    print(f"{n} : {fib(n)}" )
 
-#for number in range(1,11):
- #   print(f"{number}: {fib(number)}")
+for number in range(1,11):
+    print(f"{number}: {fib(number)}")
 
 f_cache = {}
 value = 0
@@ -30,7 +32,7 @@ def fib2(number):
     return value
 
 #for n in range (1,500):
- #   print(f"{n}: {fib2(n)}")
+ #  print(f"{n}: {fib2(n)}")
 
 from functools import lru_cache
 #Least Recently Used Cache
@@ -43,5 +45,16 @@ def fib3(k):
     elif k > 2:
         return fib3(k-1) + fib3(k-2)
 
-for i in range(999):
-    print(f"{i}: {fib3(i)}")
+#for i in range(999):
+ #   print(f"{i}: {fib3(i)}")
+
+def TowerOfHanoi(n, source, destination_rod, auxiliary_rod):
+    if n == 1:
+        print("Move disk 1 from source ", source, " to destination ", destination_rod)
+        return
+    TowerOfHanoi(n - 1, source, auxiliary_rod, destination_rod)
+    print("Move disk ", n, " from source ", source, " to destination ", destination_rod)
+    TowerOfHanoi(n - 1, auxiliary_rod, destination_rod, source)
+
+n = 4
+TowerOfHanoi(n, 'A', 'B', 'C')
